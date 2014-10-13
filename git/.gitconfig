@@ -1,0 +1,7 @@
+[core]
+  excludesfile = ~/.gitignore
+  editor = /usr/bin/vim
+[push]
+  default = simple
+[color]
+  ui = true

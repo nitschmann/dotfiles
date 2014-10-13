@@ -1,0 +1,31 @@
+# -*- encoding : utf-8 -*-
+require "spec_helper"
+
+require "max_crm/template"
+
+describe MaxCrm::Template do
+  describe ".push" do
+    context "without tenant name" do
+      it "raises an error" do
+        expect{ described_class.push }.to raise_error(ArgumentError, "No template config file found for specified tenant")
+      end
+    end
+
+    context "with non-present tenant_name" do
+      it "raises an error" do
+        expect{ described_class.push("tenant") }.to raise_error(ArgumentError, "No template config file found for specified tenant")
+      end
+    end
+
+    context "with present tenant" do
+      before do
+        described_class.stub(:template_file_for_tenant?).with(tenant_name).and_return(true)
+      end
+
+      let(:tenant_name) { "test_tenant" }
+
+      specify do
+      end
+    end
+  end
+end

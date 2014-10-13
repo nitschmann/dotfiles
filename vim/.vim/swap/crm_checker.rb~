@@ -1,0 +1,34 @@
+# -*- encoding : utf-8 -*-
+require "max_crm"
+
+module MaxCrm
+  module CrmChecker
+    def self.webcrm_available?
+      Infopark::Crm::Contact.first
+      true
+    rescue => e
+      notify_honeybadger(e) if self.respond_to?(:notify_honeybadger)
+      Rails.logger.error(e)
+      false
+    end
+
+    def webcrm_tenant_available?(name)
+      Settings.tenant_exists?(name)
+    end
+
+    def custom_type_available?
+      return false unless webcrm_available?
+      Infopark::Crm::CustomType.find(custom_type_name).present?
+    rescue ActiveResource::ResourceNotFound
+      false
+    end
+
+    def redirect_if_webcrm_not_available
+      render "web_form/offline" unless webcrm_available?
+    end
+
+    def redirect_if_custom_type_not_available
+      render "web_form/offline" unless custom_type_available?
+    end
+  end
+end

@@ -1,0 +1,32 @@
+---
+development:
+  crm:
+    contact_form_crm: &1
+      url: https://mpg.crm.infopark.net
+      login: root
+      api_key: 9f02582bba71454468656291ad644c875e54920956418005fbb62a82a893497f
+    live_read_credentials_crm: &2
+      url: https://mpg.crm.infopark.net
+      login: mpg-team
+      api_key: ab6231e5eed7f01327deccbc1abbe934330d7491829970f2f046855ab015fb3f
+    newsletter_crm: &3
+      url:
+      login:
+      api_key:
+    webcrm: *1
+    abocrm: *2
+preview:
+  crm:
+    contact_form_crm: *1
+    live_read_credentials_crm: *2
+    newsletter_crm: *3
+    webcrm: *1
+    abocrm: *2
+production:
+  default: contact_form_crm
+  crm:
+    contact_form_crm: *1
+    live_read_credentials_crm: *2
+    newsletter_crm: *3
+    webcrm: *1
+    abocrm: *2

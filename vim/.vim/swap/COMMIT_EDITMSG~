@@ -1,0 +1,24 @@
+# This is a combination of 3 commits.
+# The first commit's message is:
+enable caching for pre values in web forms
+
+# This is the 2nd commit message:
+
+specs for web_form_overview_controller
+
+# This is the 3rd commit message:
+
+smaller fix in web_form_overview_controller
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# rebase in progress; onto e51e2ec
+# You are currently editing a commit while rebasing branch 'common/feature/chaching_in_webforms' on 'e51e2ec'.
+#
+# Changes to be committed:
+#	modified:   common/app/controllers/web_form_overview_controller.rb
+#	modified:   common/app/helpers/web_form_helper.rb
+#	modified:   mpg-app/Gemfile
+#	modified:   mpg-app/spec/controllers/common/web_form_overview_controller_spec.rb
+#	modified:   mpg-app/spec/support/crm_test_support.rb
+#

@@ -1,0 +1,30 @@
+# -*- encoding : utf-8 -*-
+require "spec_helper"
+
+require "max_crm/crm_checker"
+require "max_crm/test_server"
+
+describe MaxCrm::CrmChecker do
+  let(:dummy_class) { Class.new{ include MaxCrm::CrmChecker } }
+
+  describe ".webcrm_available?" do
+    context "crm not available" do
+      after(:all) { MaxCrm::TestServer.init }
+
+      context "no crm" do
+        before do
+          Infopark::Crm.configure do |config|
+            config.url      = nil
+            config.login    = nil
+            config.api_key  = nil
+          end
+        end
+
+        specify do
+          binding.pry
+          # expect{ dummy_class.webcrm_available? }.not_to be
+        end
+      end
+    end
+  end
+end
