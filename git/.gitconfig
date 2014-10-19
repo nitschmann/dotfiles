@@ -5,3 +5,5 @@
   default = simple
 [color]
   ui = true
+[user]
+	name = Florian Nitschmann
