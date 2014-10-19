@@ -1,2 +1,3 @@
-./.vim/bundle/*
-./.vim/swap/*
+.vim/bundle/
+.vim/swap/
+.vim/tmp/

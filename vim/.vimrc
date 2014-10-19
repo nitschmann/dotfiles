@@ -20,7 +20,7 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -38,6 +38,8 @@ NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'raimondi/delimitMate'
 NeoBundle 'tpope/vim-commentary'
+NeoBundle 'vim-scripts/Vim-R-plugin'
+NeoBundle 'rking/ag.vim'
 
 NeoBundleCheck
 
@@ -55,6 +57,8 @@ filetype plugin on
 
 " Enable loading the indent file for specific file types.
 filetype indent on
+
+call neobundle#end()
 
 " Copy indent from current line when starting a new line.
 set autoindent
@@ -153,7 +157,11 @@ set directory=.,$TEMP
 
 " backup dir settings
 set backup
-set backupdir=~/.vim/swap
+set backupdir=~/.vim/tmp
+set dir=~/.vim/swap
 
 " disable highlighting of search results
 set hlsearch!
+
+" enable scrolling and mouse-clicks
+set mouse=a
