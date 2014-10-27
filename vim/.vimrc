@@ -40,6 +40,8 @@ NeoBundle 'raimondi/delimitMate'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'vim-scripts/Vim-R-plugin'
 NeoBundle 'rking/ag.vim'
+NeoBundle 'gioele/vim-autoswap'
+NeoBundle 'vim-scripts/bash-support.vim'
 
 NeoBundleCheck
 
