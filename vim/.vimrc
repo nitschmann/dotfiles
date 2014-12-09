@@ -42,6 +42,8 @@ NeoBundle 'vim-scripts/Vim-R-plugin'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'gioele/vim-autoswap'
 NeoBundle 'vim-scripts/bash-support.vim'
+NeoBundle 'mustache/vim-mustache-handlebars'
+NeoBundle 'vim-scripts/AutoComplPop'
 
 NeoBundleCheck
 
