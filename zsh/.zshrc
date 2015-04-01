@@ -68,3 +68,6 @@ export PATH="/Users/fnitschmann/.rbenv/shims:/Users/fnitschmann/.rbenv/bin:/usr/
 for file in "${ZDOTDIR:-$HOME}"/.zsh/*.zsh; do
   source "${ZDOTDIR:-$HOME}/.zsh/${file:t}"
 done
+
+# Node.JS and npm
+export PATH=/usr/local/share/npm/bin:$PATH

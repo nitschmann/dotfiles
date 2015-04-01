@@ -1,5 +1,9 @@
+AutoComplPop
+Command-T
+Spacegray.vim
 Vim-R-plugin
 ag.vim
+bash-support.vim
 ctrlp.vim
 delimitMate
 editorconfig-vim
@@ -7,10 +11,13 @@ neobundle.vim
 nerdtree
 tmuxline.vim
 vim-airline
+vim-autoswap
 vim-colors-solarized
 vim-colorschemes
 vim-commentary
 vim-endwise
+vim-liquid
 vim-markdown
+vim-mustache-handlebars
 vim-ruby
 vim-togglemouse

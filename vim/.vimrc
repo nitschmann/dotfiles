@@ -44,6 +44,9 @@ NeoBundle 'gioele/vim-autoswap'
 NeoBundle 'vim-scripts/bash-support.vim'
 NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'vim-scripts/AutoComplPop'
+NeoBundle 'vim-scripts/Spacegray.vim'
+NeoBundle 'tpope/vim-liquid'
+NeoBundle 'wincent/Command-T'
 
 NeoBundleCheck
 
@@ -172,3 +175,8 @@ set hlsearch!
 
 " enable scrolling and mouse-clicks
 set mouse=a
+
+" ignore specifi dirs for search
+set wildignore+=vendor/cache/**,vendor/assets/**,log/**,tmp/**
+
+set clipboard=unnamed

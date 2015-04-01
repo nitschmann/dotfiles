@@ -1,10 +1,6 @@
 #
 # Alias
 #
-
-# Vi/Vim
-alias vi="vim"
-
 # make rake tasks work correctly
 alias rake="noglob rake"
 
@@ -20,3 +16,9 @@ alias panesize="tmux resize-pane"
 
 # Override whoami
 alias whoami="echo fnitschmann"
+
+alias wkhtmltopdf="/Applications/wkhtmltopdf.app/Contents/MacOS/wkhtmltopdf"
+
+# Use MacVim
+alias vi="/usr/local/bin/mvim -v"
+alias vim="/usr/local/bin/mvim -v"
