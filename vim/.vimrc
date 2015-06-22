@@ -40,13 +40,14 @@ NeoBundle 'raimondi/delimitMate'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'vim-scripts/Vim-R-plugin'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'gioele/vim-autoswap'
 NeoBundle 'vim-scripts/bash-support.vim'
 NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'vim-scripts/AutoComplPop'
 NeoBundle 'vim-scripts/Spacegray.vim'
 NeoBundle 'tpope/vim-liquid'
 NeoBundle 'wincent/Command-T'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'Shougo/neocomplete.vim'
 
 NeoBundleCheck
 
@@ -59,11 +60,10 @@ set title
 " Switch syntax highlighting on.
 syntax on
 
-" Enable loading the plugin files for specific file types.
-filetype plugin on
+filetype off
 
-" Enable loading the indent file for specific file types.
-filetype indent on
+" Enable loading the plugin files for specific file types.
+filetype plugin indent on
 
 call neobundle#end()
 
@@ -139,7 +139,7 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 " Close vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Put NERDTree on the left side
+" Place NERDTree on the left side
 let g:NERDTreeWinPos = 'left'
 
 let NERDTreeShowHidden=1
@@ -162,13 +162,17 @@ set path+=$PWD/**
 " clean search patterns
 let @/ = ""
 
-" let :vimgrp work correctly
+" let :vimgrep work correctly
 set directory=.,$TEMP
 
 " backup dir settings
 set backup
-set backupdir=~/.vim/tmp
-set dir=~/.vim/swap
+
+" just write cache and swap files for the session time to save space
+" set backupdir=/tmp/vim/backup
+" set dir=/tmp/vim/swap
+set backupdir=~/.vim/tmp//
+set dir=~/.vim/swap//
 
 " disable highlighting of search results
 set hlsearch!
@@ -176,7 +180,9 @@ set hlsearch!
 " enable scrolling and mouse-clicks
 set mouse=a
 
-" ignore specifi dirs for search
+" ignore specific dirs for search
 set wildignore+=vendor/cache/**,vendor/assets/**,log/**,tmp/**
 
+" use system clipboard
 set clipboard=unnamed
+
