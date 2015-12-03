@@ -48,6 +48,8 @@ NeoBundle 'tpope/vim-liquid'
 NeoBundle 'wincent/Command-T'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'pangloss/vim-javascript'
 
 NeoBundleCheck
 
@@ -76,8 +78,7 @@ set tabstop=2
 " Controls how many columns Vim uses when <Tab> is pressed in insert mode.
 set softtabstop=2
 
-" When set, hitting <Tab> in insert mode will produce the appropriate
-" number of spaces.
+" always uses spaces instead of tab characters
 set expandtab
 
 " How many columns text is indented with reindent operations (>> & <<) and
@@ -95,12 +96,14 @@ set textwidth=79
 
 " When set to dark, Vim will try to use colors that look good on a dark
 " background.
-set background=dark
+" set background=dark
 
 colorscheme twilight256
 
 " Print the line number in front of each line.
 set number
+
+autocmd filetype javascript set shiftwidth=2
 
 " While typing a search command, show where the pattern, as it was typed so far,
 " When a bracket is inserted, briefly jump to the matching one. A Beep is given
@@ -181,8 +184,15 @@ set hlsearch!
 set mouse=a
 
 " ignore specific dirs for search
-set wildignore+=vendor/cache/**,vendor/assets/**,log/**,tmp/**
+set wildignore+=vendor/cache/**,vendor/assets/**,log/**,tmp/**,node_modules/**
 
 " use system clipboard
 set clipboard=unnamed
 
+augroup CommandTExtension
+  autocmd!
+  autocmd FocusGained * CommandTFlush
+  autocmd BufWritePost * CommandTFlush
+  autocmd FileWritePost * CommandTFlush
+  autocmd BufDelete * CommandTFlush
+augroup END

@@ -18,7 +18,3 @@ alias panesize="tmux resize-pane"
 alias whoami="echo fnitschmann"
 
 alias wkhtmltopdf="/Applications/wkhtmltopdf.app/Contents/MacOS/wkhtmltopdf"
-
-# Use MacVim
-alias vi="/usr/local/bin/mvim -v"
-alias vim="/usr/local/bin/mvim -v"
