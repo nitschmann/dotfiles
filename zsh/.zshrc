@@ -88,9 +88,8 @@ if [ -d $NPM_PACKAGES ]; then
 fi
 
 # NVM
-NVM_DIR="$HOME/.nvm"
-if [ -d $NVM_DIR ]; then
-  export $NVM_DIR
+if [ -d "~/.nvm" ]; then
+  export NVM_DIR="~/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
@@ -98,14 +97,6 @@ NDENV_DIR="$HOME/.ndenv"
 if [ -d $NDENV_DIR ]; then
   export PATH=$NDENV_DIR/bin:$PATH
 fi
-
-# LUNCHY
-LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-  if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-    . $LUNCHY_DIR/lunchy-completion.zsh
-  fi
-
-eval `/usr/libexec/path_helper -s`
 
 # Postgres.app (only Mac OSX)
 if [ -d "$PATH:/Applications/Postgres.app/Contents/Versions/9.4" ]; then
