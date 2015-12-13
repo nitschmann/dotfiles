@@ -1,4 +1,4 @@
-# !/bin/sh
+# !bin/sh
 
 # install required packages
 sudo apt-get update
@@ -6,27 +6,30 @@ sudo apt-get -y install zsh
 sudo apt-get -y install tmux
 sudo apt-get -y install ruby
 
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 # make ZSH default login shell for current user
 command -v zsh | sudo tee -a /etc/shells
 sudo chsh -s "$(command -v zsh)" "${USER}"
 
 # ZSH dependencies
-ln -s ./zsh/.zsh ~
-ln -s ./zsh/.zshenv ~
-ln -s ./zsh/.zshrc ~
+ln -sf $PWD/zsh/.zsh ~
+ln -sf $PWD/zsh/.zshenv ~
+ln -sf $PWD/zsh/.zshrc ~
 
 # tmux dependencies
-ln -s ./tmux/.tmux.conf ~
+ln -sf $PWD/tmux/.tmux.conf ~
 
 # vim dependencies
-ln -s ./vim/.vim ~
-ln -s ./vim/.vimrc
+ln -sf $PWD/vim/.vim ~
+mkdir -p ~/.vim/bundle
+git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+ln -sf $PWD/vim/.vimrc ~
 
 # git dependencies
-ln -s ./git/.gitconfig
-ln -s ./git/.gitignore
+ln -sf $PWD/git/.gitconfig
 
 # ruby dependencies
-ln -s ./ruby/.gemrc
+ln -sf $PWD/ruby/.gemrc
 
-echo "Installation was sucessfull!\n\n\Please login again to see the effects."
+echo "Installation was sucessfull! Please login again to see the effects."
