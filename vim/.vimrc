@@ -174,8 +174,8 @@ set backup
 " just write cache and swap files for the session time to save space
 " set backupdir=/tmp/vim/backup
 " set dir=/tmp/vim/swap
-set backupdir=~/.vim/tmp//
-set dir=~/.vim/swap//
+set backupdir=~/.vim/tmp/
+set dir=~/.vim/swap/
 
 " disable highlighting of search results
 set hlsearch!
