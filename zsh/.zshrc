@@ -57,6 +57,18 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
 
+# load all custom configs
+for file in "${ZDOTDIR:-$HOME}"/.zsh/*.zsh; do
+  source "${ZDOTDIR:-$HOME}/.zsh/${file:t}"
+done
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
+
 # GO
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME/code/go
@@ -78,29 +90,11 @@ fi
 # NVM
 NVM_DIR="$HOME/.nvm"
 if [ -d $NVM_DIR ]; then
-  export NVM_DIR
+  export $NVM_DIR
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
-# ndenv
 NDENV_DIR="$HOME/.ndenv"
-# # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# load all custom configs
-for file in "${ZDOTDIR:-$HOME}"/.zsh/*.zsh; do
-  source "${ZDOTDIR:-$HOME}/.zsh/${file:t}"
-done
-
-# rbenv
-# export PATH="~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin"
 if [ -d $NDENV_DIR ]; then
   export PATH=$NDENV_DIR/bin:$PATH
 fi
