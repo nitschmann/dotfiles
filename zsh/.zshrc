@@ -50,23 +50,14 @@ plugins=(git rails ruby tmux syntax-highlighting homebrew rake npm nvm ndenv gru
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+# export PATH="~/.rbenv/shims:$HOME/.rbenv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export PATH="~/.rbenv/shims:~/.rbenv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:~/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 
-# # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# load all custom configs
-for file in "${ZDOTDIR:-$HOME}"/.zsh/*.zsh; do
-  source "${ZDOTDIR:-$HOME}/.zsh/${file:t}"
-done
-
+# GO
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME/code/go
 
@@ -93,6 +84,23 @@ fi
 
 # ndenv
 NDENV_DIR="$HOME/.ndenv"
+# # Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# load all custom configs
+for file in "${ZDOTDIR:-$HOME}"/.zsh/*.zsh; do
+  source "${ZDOTDIR:-$HOME}/.zsh/${file:t}"
+done
+
+# rbenv
+# export PATH="~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin"
 if [ -d $NDENV_DIR ]; then
   export PATH=$NDENV_DIR/bin:$PATH
 fi
