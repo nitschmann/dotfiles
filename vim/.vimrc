@@ -41,13 +41,16 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'vim-scripts/Vim-R-plugin'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'vim-scripts/bash-support.vim'
-NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'vim-scripts/AutoComplPop'
 NeoBundle 'vim-scripts/Spacegray.vim'
 NeoBundle 'tpope/vim-liquid'
 NeoBundle 'wincent/Command-T'
-NeoBundle 'fatih/vim-go'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'mustache/vim-mustache-handlebars'
+NeoBundle 'nono/vim-handlebars'
+NeoBundle 'lervag/vimtex'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'xuhdev/vim-latex-live-preview'
 
 NeoBundleCheck
 
@@ -181,8 +184,20 @@ set hlsearch!
 set mouse=a
 
 " ignore specific dirs for search
-set wildignore+=vendor/cache/**,vendor/assets/**,log/**,tmp/**
+set wildignore+=vendor/cache/**,vendor/assets/**,log/**,tmp/**,node_modules/**
 
 " use system clipboard
 set clipboard=unnamed
+
+" Go settings
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+" LaTeX settings
+autocmd Filetype tex setl updatetime=1
+let g:livepreview_previewer = 'open -a Preview'
+let g:Tex_DefaultTargetFormat='pdf'
 
