@@ -45,7 +45,7 @@ ZSH_THEME="af-magic"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails ruby tmux syntax-highlighting homebrew rake npm nvm ndenv grunt revel)
+plugins=(git rails ruby tmux syntax-highlighting homebrew rake npm nvm grunt revel git-flow)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,12 +93,19 @@ if [ -d "~/.nvm" ]; then
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
-NDENV_DIR="$HOME/.ndenv"
-if [ -d $NDENV_DIR ]; then
-  export PATH=$NDENV_DIR/bin:$PATH
-fi
+# NDENV_DIR="$HOME/.ndenv"
+# if [ -d $NDENV_DIR ]; then
+#   export PATH=$NDENV_DIR/bin:$PATH
+# fi
 
 # Postgres.app (only Mac OSX)
 if [ -d "$PATH:/Applications/Postgres.app/Contents/Versions/9.4" ]; then
   export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 fi
+
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+
+# Postgres
+alias postgres.server="pg_ctl -D /usr/local/var/postgres"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

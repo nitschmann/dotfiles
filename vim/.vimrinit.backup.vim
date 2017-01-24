@@ -49,7 +49,6 @@ NeoBundle 'fatih/vim-go'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'wincent/command-t'
 
 NeoBundleCheck
 
