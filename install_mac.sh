@@ -1,0 +1,59 @@
+# !bin/sh
+
+# installation for Mac OS X Systems
+# Requirements: Git and Homebrew
+
+# install required packages
+brew update
+brew install zsh
+brew install tmux
+
+# ruby version manager
+brew install rbenv
+
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# make ZSH default login shell for current user
+chsh -s /usr/local/bin/zsh
+
+# ZSH dependencies
+ln -sf $PWD/zsh/.zsh ~
+ln -sf $PWD/zsh/.zshenv ~
+ln -sf $PWD/zsh/.zshrc ~
+
+source ~/.zshrc
+
+# tmux dependencies
+ln -sf $PWD/tmux/.tmux.conf ~
+ln -sf $PWD/tmux/.tmux ~
+
+# TPM for tmux plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# vim Dir
+ln -sf $PWD/vim/.vim ~
+
+# dein.vim plugin manager
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > $PWD/installer.sh
+sh $PWD/installer.sh ~/.vim/dein
+
+# override the system vim
+brew install neovim --env-std --override-system-vim
+
+# Config for nvim
+mkdir -p ~/.config/
+ln -sf $PWD/config/nvim ~/.config/
+
+# the_silver_searcher for Ag in vim
+brew install the_silver_searcher
+
+# install nodenv for Node.JS version management
+brew install nodenv
+
+# git dependencies
+ln -sf $PWD/git/.gitconfig
+
+# ruby dependencies
+ln -sf $PWD/ruby/.gemrc
+
+echo "Installation was sucessfull! Please start session again to see effects."

@@ -1,0 +1,10 @@
+[core]
+  excludesfile = ~/.gitignore
+  editor = $(which nvim)
+[push]
+  default = simple
+[color]
+  ui = true
+[user]
+	name = Florian Nitschmann
+	email = f.nitschmann@googlemail.com
