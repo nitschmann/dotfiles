@@ -9,11 +9,6 @@ set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state("~/.vim/dein")
   call dein#begin('~/.vim/dein')
 
-  " Let dein manage dein
-  " Required:
-  " call dein#add('~/.vim/dein/ ./plugin/repos/github.com/Shougo/dein.vim')
-
-  " My bundles/plugins
   call dein#add('itchyny/lightline.vim')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('benmills/vimux')
@@ -43,6 +38,15 @@ if dein#load_state("~/.vim/dein")
   call dein#add('posva/vim-vue')
   call dein#add('tpope/vim-rbenv')
   call dein#add('mustache/vim-mustache-handlebars')
+  call dein#add('cespare/vim-toml')
+  call dein#add('StanAngeloff/php.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('captbaritone/better-indent-support-for-php-with-html')
+  call dein#add('zchee/deoplete-go', {'build': 'make'})
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
 
   " jellybeans template
   call dein#add('nanotech/jellybeans.vim')
@@ -273,6 +277,10 @@ autocmd BufRead,BufNewFile *.yml.example set filetype=yaml
 
 set timeoutlen=1000 ttimeoutlen=0
 
+" Vim Python support
+let g:python_host_prog = "$PYENV_ROOT/versions/neovim2/bin/python"
+let g:python3_host_prog = "$PYENV_ROOT/versions/neovim3/bin/python"
+
 " CtrlP auto cache clearing.
 " ----------------------------------------------------------------------------
 function! SetupCtrlP()
@@ -295,3 +303,7 @@ let g:ruby_path = system('echo $HOME/.rbenv/shims')
 " let g:ruby_host_prog = system('echo $HOME/.rbenv/versions/2.4.1/bin/neovim-ruby-host')
 let g:syntastic_eruby_ruby_quiet_messages =
     \ {'regex': 'possibly useless use of a variable in void context'}
+
+" Golang Shougo/deoplete.nvim settings
+let g:deoplete#enable_at_startup = 1
+

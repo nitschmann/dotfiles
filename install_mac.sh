@@ -8,8 +8,12 @@ brew update
 brew install zsh
 brew install tmux
 
-# ruby version manager
+# Ruby version manager
 brew install rbenv
+
+# Python version manager
+brew install pyenv
+brew install pyenv-virtualenv
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
@@ -55,5 +59,19 @@ ln -sf $PWD/git/.gitconfig
 
 # ruby dependencies
 ln -sf $PWD/ruby/.gemrc
+
+# Install specific Python versions (NOTE: Needs to be updated from time to time) for NeoVim support
+pyenv install 3.7.0
+pyenv install 2.7.15
+pyenv global 3.7.0
+pip install neovim
+
+pyenv virtualenv 2.7.15 neovim2
+pyenv activate neovim2
+pip install neovim
+
+pyenv virtualenv 3.7.0 neovim3
+pyenv activate neovim3
+pip install neovim
 
 echo "Installation was sucessfull! Please start session again to see effects."
