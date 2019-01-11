@@ -17,7 +17,10 @@ alias panesize="tmux resize-pane"
 # Override whoami
 alias whoami="echo fnitschmann"
 
-alias wkhtmltopdf="/Applications/wkhtmltopdf.app/Contents/MacOS/wkhtmltopdf"
-
+# Vim
 alias vi="nvim"
 alias vim="nvim"
+
+# Code-related shortcuts
+alias codebase="$HOME/code"
+alias gosrc="$GOPATH/src/"

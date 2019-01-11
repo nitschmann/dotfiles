@@ -45,7 +45,23 @@ ZSH_THEME="af-magic"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails ruby tmux syntax-highlighting homebrew rake npm nvm ndenv grunt revel docker docker-compse pyenv)
+plugins=(
+  git
+  rails
+  ruby
+  tmux
+  syntax-highlighting
+  homebrew
+  rake
+  npm
+  nvm
+  ndenv
+  grunt
+  revel
+  docker
+  docker-compse
+  pyenv
+  osx)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,6 +134,10 @@ rbenv() {
     command rbenv "$command" "$@";;
   esac
 }
+
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH=$PATH:"$HOME/.local/bin"
+fi
 
 if [ -d "$HOME/bin" ]; then
   export PATH=$PATH:$HOME/bin
