@@ -50,8 +50,8 @@ if dein#load_state("~/.vim/dein")
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
 
-  " jellybeans template
-  call dein#add('nanotech/jellybeans.vim')
+  " nord-vim template (https://github.com/arcticicestudio/nord-vim)
+  call dein#add('arcticicestudio/nord-vim')
 
   " Required:
   call dein#end()
@@ -97,8 +97,7 @@ set splitright
 
 " Set the color scheme
 set background=dark
-
-colorscheme jellybeans
+colorscheme nord
 
 " scrooloose/syntastic
 set statusline+=%#warningmsg#

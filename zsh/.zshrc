@@ -1,3 +1,6 @@
+# Disable the checks
+ZSH_DISABLE_COMPFIX="true"
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -50,16 +53,12 @@ plugins=(
   rails
   ruby
   tmux
-  syntax-highlighting
-  homebrew
+  brew
   rake
   npm
   nvm
-  ndenv
   grunt
-  revel
   docker
-  docker-compse
   pyenv
   osx)
 

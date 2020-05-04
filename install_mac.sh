@@ -42,7 +42,7 @@ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >
 sh $PWD/installer.sh ~/.vim/dein
 
 # override the system vim
-brew install neovim --env-std --override-system-vim
+brew install neovim
 
 # Config for nvim
 mkdir -p ~/.config/
@@ -55,10 +55,10 @@ brew install the_silver_searcher
 brew install nodenv
 
 # git dependencies
-ln -sf $PWD/git/.gitconfig
+ln -sf $PWD/git/.gitconfig ~
 
 # ruby dependencies
-ln -sf $PWD/ruby/.gemrc
+ln -sf $PWD/ruby/.gemrc ~
 
 # Install specific Python versions (NOTE: Needs to be updated from time to time) for NeoVim support
 pyenv install 3.7.0
