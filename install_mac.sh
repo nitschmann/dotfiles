@@ -57,7 +57,7 @@ brew install nodenv
 
 # git dependencies
 ln -sf $PWD/git/.gitignore ~/.gitignore
-ln -sf $PWD/git/.gitconfig.example ~/.gitconfig
+cp $PWD/git/.gitconfig.example ~/.gitconfig
 
 # ruby dependencies
 ln -sf $PWD/ruby/.gemrc ~
