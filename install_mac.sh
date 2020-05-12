@@ -1,12 +1,13 @@
 # !bin/sh
 
 # installation for Mac OS X Systems
-# Requirements: Git and Homebrew
+# Requirements: Git and Homebrew pre-installed
 
 # install required packages
 brew update
 brew install zsh
 brew install tmux
+brew install node
 
 # Ruby version manager
 brew install rbenv
@@ -55,10 +56,18 @@ brew install the_silver_searcher
 brew install nodenv
 
 # git dependencies
-ln -sf $PWD/git/.gitconfig ~
+ln -sf $PWD/git/.gitignore ~/.gitignore
+ln -sf $PWD/git/.gitconfig.example ~/.gitconfig
 
 # ruby dependencies
 ln -sf $PWD/ruby/.gemrc ~
+
+# global Ruby version and solargraph Gem
+rbenv install 2.6.6
+rbenv global 2.6.6
+rbenv rehash
+gem install solargraph
+ln -sf $(which solargraph) /usr/local/bin /usr/local/bin
 
 # Install specific Python versions (NOTE: Needs to be updated from time to time) for NeoVim support
 pyenv install 3.7.0

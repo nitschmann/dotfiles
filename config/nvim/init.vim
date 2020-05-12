@@ -29,7 +29,6 @@ if dein#load_state("~/.vim/dein")
   call dein#add('tpope/vim-endwise')
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('Shougo/deoplete-rct')
-  call dein#add('ervandew/supertab')
 
   " Syntax highlighting plugins
   call dein#add('fatih/vim-go')
@@ -41,8 +40,7 @@ if dein#load_state("~/.vim/dein")
   call dein#add('mustache/vim-mustache-handlebars')
   call dein#add('cespare/vim-toml')
   call dein#add('StanAngeloff/php.vim')
-  " TODO: Fix this plugin config, it is causing problems from time to time :(
-  " call dein#add('Shougo/deoplete.nvim')
+
   call dein#add('captbaritone/better-indent-support-for-php-with-html')
   call dein#add('zchee/deoplete-go', {'build': 'make'})
   if !has('nvim')
@@ -50,7 +48,10 @@ if dein#load_state("~/.vim/dein")
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
 
-  " nord-vim template (https://github.com/arcticicestudio/nord-vim)
+  " coc.nvim intellisense engine for neovim
+  call dein#add('neoclide/coc.nvim', {'merged': 0, 'rev': 'release'})
+
+  " nord-vim colorscheme template (https://github.com/arcticicestudio/nord-vim)
   call dein#add('arcticicestudio/nord-vim')
 
   " Required:
@@ -300,10 +301,24 @@ endif
 " Let vim find the current ruby version and ruby_host_prog via rbenv
 " ----------------------------------------------------------------------------
 let g:ruby_path = system('echo $HOME/.rbenv/shims')
-" let $NVIM_RUBY_HOST_PROG = system("echo $(echo $(rbenv whence neovim-ruby-host | tail -1) | sed -e 's/^[ \t]*//')")
-" let g:ruby_host_prog = system('echo $HOME/.rbenv/versions/2.4.1/bin/neovim-ruby-host')
 let g:syntastic_eruby_ruby_quiet_messages =
     \ {'regex': 'possibly useless use of a variable in void context'}
 
 " Golang Shougo/deoplete.nvim settings
 let g:deoplete#enable_at_startup = 1
+
+" coc.vim configurations
+let g:coc_global_extensions = ['coc-solargraph']
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+nmap <silent> gd <Plug>(coc-definition)

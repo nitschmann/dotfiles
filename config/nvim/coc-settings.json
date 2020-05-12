@@ -1,0 +1,4 @@
+{
+  "solargraph.commandPath": "/usr/local/bin/solargraph",
+  "solargraph.useBundler": false
+}
