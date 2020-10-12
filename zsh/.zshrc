@@ -86,8 +86,11 @@ else
 fi
 
 # GO
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME/code/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 # Node.js and NPM
 NPM_PACKAGES="$HOME/.npm-packages"
@@ -146,3 +149,12 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+autoload -U +X bashcompinit && bashcompinit
+eval "$($HOME/.sbsub/bin/sb init -)"

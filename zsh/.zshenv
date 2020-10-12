@@ -80,3 +80,9 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
+
+# sB specific env vars
+export SB_SSH_USERNAME="floriannitschmann"
+export SB_CONCOURSE_TEAM="payments"
+export AWS_USER="florian.nitschmann@solarisbank.de"
+export AWS_SHARED_CREDENTIALS_FILE=$HOME/.aws/temp-2fa-credentials

@@ -24,10 +24,11 @@ if dein#load_state("~/.vim/dein")
 
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/vimfiler.vim')
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('vim-scripts/AutoComplPop')
   call dein#add('tpope/vim-endwise')
   call dein#add('jiangmiao/auto-pairs')
-
-  call dein#add('buoto/gotests-vim')
+  call dein#add('Shougo/deoplete-rct')
 
   " Syntax highlighting plugins
   call dein#add('fatih/vim-go')
@@ -39,9 +40,9 @@ if dein#load_state("~/.vim/dein")
   call dein#add('mustache/vim-mustache-handlebars')
   call dein#add('cespare/vim-toml')
   call dein#add('StanAngeloff/php.vim')
-  call dein#add('hashivim/vim-terraform')
 
   call dein#add('captbaritone/better-indent-support-for-php-with-html')
+  call dein#add('zchee/deoplete-go', {'build': 'make'})
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
@@ -269,6 +270,8 @@ autocmd BufEnter * EnableStripWhitespaceOnSave
 autocmd Filetype c setlocal ts=4 sts=4 sw=4
 autocmd Filetype cpp  setlocal ts=4 sts=4 sw=4
 
+" increase tabsize for Go-Lang programs
+autocmd Filetype go setlocal ts=4 sts=4 sw=4
 " Handle Dockerfiles correctly
 autocmd BufRead,BufNewFile Dockerfile* set filetype=dockerfile
 "
@@ -301,8 +304,11 @@ let g:ruby_path = system('echo $HOME/.rbenv/shims')
 let g:syntastic_eruby_ruby_quiet_messages =
     \ {'regex': 'possibly useless use of a variable in void context'}
 
+" Golang Shougo/deoplete.nvim settings
+let g:deoplete#enable_at_startup = 1
+
 " coc.vim configurations
-let g:coc_global_extensions = ['coc-tabnine']
+let g:coc_global_extensions = ['coc-solargraph']
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -316,23 +322,3 @@ function! s:check_back_space() abort
 endfunction
 
 nmap <silent> gd <Plug>(coc-definition)
-
-" Go-Lang programs handling
-au FileType go set noexpandtab
-au FileType go set shiftwidth=4
-au FileType go set softtabstop=4
-au FileType go set tabstop=4
-
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_auto_sameids = 1
-let g:go_fmt_command = "goimports"
-
-let g:gotests_bin = '$HOME/code/go/bin/gotests'
-
