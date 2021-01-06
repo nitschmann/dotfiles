@@ -19,6 +19,6 @@
 /vim/.vim/tmp/*
 !/vim/.vim/tmp/.keep
 
-.zsh/.zshenv
+/.zsh/.zshenv
 
 *.swp
