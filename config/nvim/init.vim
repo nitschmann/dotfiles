@@ -29,6 +29,10 @@ if dein#load_state("~/.vim/dein")
 
   call dein#add('buoto/gotests-vim')
 
+  call dein#add('google/vim-maktaba')
+  call dein#add('google/vim-codefmt')
+  call dein#add('google/vim-glaive')
+
   " Syntax highlighting plugins
   call dein#add('fatih/vim-go')
   call dein#add('plasticboy/vim-markdown')
@@ -40,6 +44,7 @@ if dein#load_state("~/.vim/dein")
   call dein#add('cespare/vim-toml')
   call dein#add('StanAngeloff/php.vim')
   call dein#add('hashivim/vim-terraform')
+  call dein#add('uarun/vim-protobuf')
 
   call dein#add('captbaritone/better-indent-support-for-php-with-html')
   if !has('nvim')
@@ -335,4 +340,3 @@ let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
 
 let g:gotests_bin = '$HOME/code/go/bin/gotests'
-

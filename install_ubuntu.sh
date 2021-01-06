@@ -14,6 +14,7 @@ sudo chsh -s "$(command -v zsh)" "${USER}"
 
 # ZSH dependencies
 ln -sf $PWD/zsh/.zsh ~
+mv $PWD/zsh/.zshenv.example $PWD/zsh/.zshenv
 ln -sf $PWD/zsh/.zshenv ~
 ln -sf $PWD/zsh/.zshrc ~
 

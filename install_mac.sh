@@ -23,6 +23,7 @@ chsh -s /usr/local/bin/zsh
 
 # ZSH dependencies
 ln -sf $PWD/zsh/.zsh ~
+mv $PWD/zsh/.zshenv.example $PWD/zsh/.zshenv
 ln -sf $PWD/zsh/.zshenv ~
 ln -sf $PWD/zsh/.zshrc ~
 
