@@ -1,3 +1,10 @@
+export HOMEBREW_PREFIX="/opt/homebrew"
+
+# Use zsh's path array; prepend Homebrew safely
+typeset -U path PATH              # de-duplicate path entries
+path=($HOMEBREW_PREFIX/bin $HOMEBREW_PREFIX/sbin $path)
+export PATH
+
 #
 # Defines environment variables.
 #
@@ -6,9 +13,11 @@
 # Browser
 #
 
-if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-fi
+#if [[ "$OSTYPE" == darwin* ]]; then
+#  export BROWSER='open'
+#  export HOMEBREW_PREFIX="/opt/homebrew"
+#  export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+#fi
 
 #
 # Editors
@@ -34,7 +43,7 @@ fi
 # Paths
 #
 
-typeset -gU cdpath fpath mailpath path
+# typeset -gU cdpath fpath mailpath path
 
 # Set the the list of directories that cd searches.
 # cdpath=(
@@ -42,16 +51,16 @@ typeset -gU cdpath fpath mailpath path
 # )
 
 # Set the list of directories that Zsh searches for programs.
-path=(
-  /usr/local/{bin,sbin}
-  $path
-)
+#path=(
+#  /usr/local/{bin,sbin}
+#  $path
+#)
 
 # Fix in OSX that the path get's messed up in tmux.
-if [ -x /usr/libexec/path_helper ]; then
-  PATH=""
-  eval `/usr/libexec/path_helper -s`
-fi
+#if [ -x /usr/libexec/path_helper ]; then
+#  PATH=""
+#  eval `/usr/libexec/path_helper -s`
+#fi
 
 #
 # Less
@@ -63,9 +72,9 @@ fi
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 # Set the Less input preprocessor.
-if (( $+commands[lesspipe.sh] )); then
-  export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
-fi
+#if (( $+commands[lesspipe.sh] )); then
+#  export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
+#fi
 
 #
 # Temporary Files

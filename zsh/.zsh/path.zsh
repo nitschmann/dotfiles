@@ -1,13 +1,22 @@
 #
-# Set paths
+# Custom paths (Apple Silicon safe)
 #
 
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+# --- rbenv (only if installed) ---
+if [ -d "$HOME/.rbenv/bin" ]; then
+  path=($HOME/.rbenv/bin $path)
+  eval "$(rbenv init - zsh)"
+fi
 
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# --- MySQL (optional, only if installed at /usr/local/mysql) ---
+if [ -d "/usr/local/mysql/bin" ]; then
+  path=($path /usr/local/mysql/bin)
+  export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
+fi
 
-# MySQL
-export PATH=$PATH:/usr/local/mysql/bin
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
+# Ensure Apple Silicon Homebrew comes first
+if [ -d /opt/homebrew/bin ]; then
+  path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
+fi
+
+export PATH

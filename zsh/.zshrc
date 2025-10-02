@@ -45,6 +45,12 @@ ZSH_THEME="af-magic"
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"
 
+if [[ "$OSTYPE" == darwin* ]]; then
+  if [ -x /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+fi
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -60,7 +66,7 @@ plugins=(
   grunt
   docker
   pyenv
-  osx)
+  macos)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,11 +112,6 @@ fi
 
 if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 
-# Postgres.app (only Mac OSX)
-if [ -d "$PATH:/Applications/Postgres.app/Contents/Versions/9.4" ]; then
-  export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-fi
-
 # pyenv for Python
 if which pyenv > /dev/null; then
   eval "$(pyenv init -)"
@@ -150,11 +151,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# Added by serverless binary installer
-export PATH="$HOME/.serverless/bin:$PATH"
 
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-autoload -U +X bashcompinit && bashcompinit
-eval "$($HOME/.sbsub/bin/sb init -)"
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit && compinit
